@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Погода в городе {{ city }}
+{% endblock %}
+  
+
+{% block content %}
+  <p><h2 class="text-center">
+    Погода в городе {{ city }} на 3 дня c {{ days.current_time|date:"j.m.Y" }} по {{ days.time_3_days|date:"j.m.Y" }}
+  </h2></p>
+  <p>
+    <table class="table table-striped">
+      <thead class="thead-dark">
+          <tr>
+              <th>Время</th>
+              <th>Температура ({{ units.temperature_2m }})</th>
+              <th>Скорость ветра ({{ units.wind_speed_10m }})</th>
+              <th>Осадки ({{ units.precipitation }})</th>
+          </tr>
+      </thead>
+      <tbody>
+        {% for data in weather %}
+          {% ifchanged data.time|date:"j.m.Y" %}
+            <tr class="table-primary">
+              <td colspan="4" class="text-center"><strong><span class="h4">{{ data.time|date:"j.m.Y" }}</span></strong></td>
+            </tr>
+          {% endifchanged %}
+          <tr>
+            <td>{{ data.time|date:"G:i:s" }}</td>
+            <td>{{ data.temp }}</td>
+            <td>{{ data.wind_speed }}</td>
+            <td>{{ data.precipitation }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </p>
+{% endblock %} 
