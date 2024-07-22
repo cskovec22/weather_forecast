@@ -9,6 +9,8 @@
 
 API для погоды: https://open-meteo.com/.
 
+Образ на DockerHub: cskovec22/weather_forecast_backend.
+
 ## Запуск проекта локально
 
 - Клонируйте репозиторий и перейдите в него в командной строке:

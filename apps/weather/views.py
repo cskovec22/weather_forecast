@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
-import requests
 
 from django.shortcuts import render
+import requests
 
 from apps.weather import forms
 
